@@ -4,12 +4,14 @@ const server = require("http").createServer(app)
 const path = require("path")
 const mongoose = require("mongoose")
 const cors = require("cors")
+const router = require("./routes/router")
 
 class Application {
     constructor() {
         this.serverConfig()
         this.databaseConfig()
         this.middlewareConfig()
+        this.routerConfig()
     }
 
     serverConfig() {
@@ -28,6 +30,10 @@ class Application {
         app.use(express.static(path.join(__dirname, "public")))
         app.use(express.json())
         app.use(cors())
+    }
+
+    routerConfig() {
+        app.use("/", router)
     }
 }
 
