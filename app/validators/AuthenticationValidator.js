@@ -23,6 +23,19 @@ class AuthenticationValidator {
                 .withMessage("رمزعبور باید بیشتر از 3 و کمتر از 30 کاراکتر باشد"),
         ]
     }
+
+    adminLogin(req, res) {
+        return [
+            check("phone")
+                .not().isEmpty()
+                .withMessage("لطفا شماره همراه خود را وارد کنید"),
+            check("password")
+                .not().isEmpty()
+                .withMessage("لطفا رمزعبور خود را وارد کنید")
+                .isLength({ min: 3, max: 30 })
+                .withMessage("رمزعبور باید بیشتر از 3 و کمتر از 30 کاراکتر باشد"),
+        ]
+    }
 }
 
 module.exports = new AuthenticationValidator()
