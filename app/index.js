@@ -27,7 +27,7 @@ class Application {
     }
 
     middlewareConfig() {
-        app.use(express.static(path.join(__dirname, "public")))
+        app.use(express.static("public"))
         app.use(express.json())
         app.use(cors())
     }
